@@ -150,7 +150,7 @@
         ],
         foreColorList: null, // fallbacks on colorList
         backColorList: null, // fallbacks on colorList
-        allowCustomForeColor: true,
+        allowCustomForeColor: false,
         allowCustomBackColor: true,
         displayAsList: false,
     };
