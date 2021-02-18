@@ -191,9 +191,10 @@
             'small',
             'medium',
             'large',
-            'x-large'
+            'x-large',
+            'neutral'
         ],
-        allowCustomSize: false
+        allowCustomSize: true
     };
 
     // Add dropdown with font sizes
@@ -223,10 +224,18 @@
 
         // Find <font> elements that were added and change to <span> with chosen size
         trumbowyg.$ed.find('font[size="1"]').replaceWith(function() {
-            return $('<span/>', {
-                css: { 'font-size': size },
-                html: this.innerHTML,
-            });
+            if(size=="neutral"){
+                return $('<span/>', {
+                    css: { },
+                    html: this.innerHTML,
+                });    
+
+            }else{
+                return $('<span/>', {
+                    css: { 'font-size': size },
+                    html: this.innerHTML,
+                });    
+            }
         });
 
         // Remove and leftover <span> elements
@@ -241,13 +250,23 @@
         var dropdown = [];
 
         $.each(trumbowyg.o.plugins.fontsize.sizeList, function (index, size) {
-            trumbowyg.addBtnDef('fontsize_' + size, {
-                text: '<span style="font-size: ' + size + ';">' + (trumbowyg.lang.fontsizes[size] || size) + '</span>',
-                hasIcon: false,
-                fn: function () {
-                    setFontSize(trumbowyg, size);
-                }
-            });
+            if(size=="neutral"){
+                trumbowyg.addBtnDef('fontsize_' + size, {
+                    text: '<span style="font-size: ' + size + ';">' + (trumbowyg.lang.fontsizes[size] || size) + '</span>',
+                    hasIcon: false,
+                    fn: function () {
+                        setFontSize(trumbowyg, size);
+                    }
+                });    
+            }else{
+                trumbowyg.addBtnDef('fontsize_' + size, {
+                    text: '<span style="font-size: ' + size + ';">' + (trumbowyg.lang.fontsizes[size] || size) + '</span>',
+                    hasIcon: false,
+                    fn: function () {
+                        setFontSize(trumbowyg, size);
+                    }
+                });
+            }
             dropdown.push('fontsize_' + size);
         });
 
