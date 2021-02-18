@@ -194,7 +194,7 @@
             'x-large',
             'neutral'
         ],
-        allowCustomSize: true
+        allowCustomSize: false
     };
 
     // Add dropdown with font sizes
