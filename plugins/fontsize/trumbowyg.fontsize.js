@@ -252,7 +252,7 @@
         $.each(trumbowyg.o.plugins.fontsize.sizeList, function (index, size) {
             if(size=="neutral"){
                 trumbowyg.addBtnDef('fontsize_' + size, {
-                    text: '<span style="font-size: ' + size + ';">' + (trumbowyg.lang.fontsizes[size] || size) + '</span>',
+                    text: '<span style="font-size: ' + size + ';">' + (trumbowyg.lang.fontsizes[size] || size) + '(設定しない)</span>',
                     hasIcon: false,
                     fn: function () {
                         setFontSize(trumbowyg, size);
